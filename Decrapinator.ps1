@@ -2,6 +2,8 @@
 
 $wares = curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wares.txt
 
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -PropertyType  "DWord" -Value 1
+
 ForEach ($ware in $wares) {
     Get-AppXPackage -AllUsers $ware | Remove-AppxPackage
 }
