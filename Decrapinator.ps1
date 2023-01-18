@@ -2,7 +2,8 @@
 
 $wares = curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wares.txt
 $registryPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
-IF(!(Test-Path $registryPath)){
+
+If(!(Test-Path $registryPath)){
     New-Item -Path $registryPath -Force | Out-Null
     New-ItemProperty -Path $registryPath -Name "DisableWindowsConsumerFeatures" -PropertyType  "DWord" -Value 1 | Out-Null
 } Else {
