@@ -1,6 +1,6 @@
 # Uninstall metro apps from predefined list.
 
-$wares = Get-Content .\wares.txt
+$wares = curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wares.txt
 
 ForEach ($ware in $wares) {
     Get-AppXPackage -AllUsers $ware | Remove-AppxPackage
