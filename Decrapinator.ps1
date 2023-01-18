@@ -4,6 +4,7 @@ $wares = curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wa
 
 ForEach ($ware in $wares) {
     Get-AppXPackage -AllUsers $ware | Remove-AppxPackage
+    Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -like $ware} | Remove-AppxProvisionedPackage -Online
 }
 
 # Get uninstall strings for Office Click-To-Run versions
