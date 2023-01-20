@@ -10,8 +10,18 @@ If(!(Test-Path $registryPath)){
 New-ItemProperty -Path $registryPath -Name $registryName -PropertyType "DWord" -Value 1 | Out-Null
 
 ForEach ($ware in $wares) {
-    Get-AppXPackage -AllUsers $ware | Remove-AppxPackage
-    Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -like $ware} | Remove-AppxProvisionedPackage -Online | Out-Null
+    # Uninstall on Current User
+    If(Get-AppxPackage $ware) {
+        Get-AppXPackage $ware | Remove-AppxPackage
+    }
+    # Uninstall on All Users
+    If(Get-AppxPackage -AllUsers $ware) {
+        Get-AppXPackage -AllUsers $ware | Remove-AppxPackage
+    }
+    # Prevent install for future users
+    If(Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -like $ware}) {
+        Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -like $ware} | Remove-AppxProvisionedPackage -Online | Out-Null
+    }
 }
 
 # Get uninstall strings for Office Click-To-Run versions
