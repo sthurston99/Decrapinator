@@ -33,8 +33,7 @@ Microsoft.XboxGameOverlay
 Microsoft.XboxGamingOverlay
 Microsoft.XboxIdentityProvider
 Microsoft.XboxSpeechToTextOverlay
-Microsoft.ZuneMusic
-Microsoft.ZuneVideo
+*Zune*
 MicrosoftCorporationII.QuickAssist
 MicrosoftTeams
 MicrosoftWindows.Client.WebExperience
