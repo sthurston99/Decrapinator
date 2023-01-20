@@ -6,10 +6,8 @@ $registryName "DisableWindowsConsumerFeatures"
 
 If(!(Test-Path $registryPath)){
     New-Item -Path $registryPath -Force | Out-Null
-    New-ItemProperty -Path $registryPath -Name $registryName -PropertyType "DWord" -Value 1 | Out-Null
-} Else {
-    New-ItemProperty -Path $registryPath -Name $registryName -PropertyType "DWord" -Value 1 | Out-Null
 }
+New-ItemProperty -Path $registryPath -Name $registryName -PropertyType "DWord" -Value 1 | Out-Null
 
 ForEach ($ware in $wares) {
     Get-AppXPackage -AllUsers $ware | Remove-AppxPackage
