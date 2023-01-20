@@ -1,6 +1,7 @@
 # Uninstall metro apps from predefined list.
-
 $wares = curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wares.txt
+
+# Prevent start-menu bloat and other crap
 $registryPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
 $registryName "DisableWindowsConsumerFeatures"
 
@@ -9,6 +10,7 @@ If(!(Test-Path $registryPath)){
 }
 New-ItemProperty -Path $registryPath -Name $registryName -PropertyType "DWord" -Value 1 | Out-Null
 
+# Run through uninstall process for Metro Apps
 ForEach ($ware in $wares) {
     # Uninstall on Current User
     If(Get-AppxPackage $ware) {
