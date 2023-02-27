@@ -1,10 +1,11 @@
 *Amazon*
-*Partner*
-*Facebook*
-AppUp.Intel*
+*Bing*
 *Clipchamp*
 *Dell*
-*Bing*
+*Facebook*
+*Partner*
+*Zune*
+AppUp.Intel*
 Microsoft.GamingApp
 Microsoft.Getstarted
 Microsoft.Microsoft3DViewer
@@ -31,10 +32,8 @@ Microsoft.XboxGameOverlay
 Microsoft.XboxGamingOverlay
 Microsoft.XboxIdentityProvider
 Microsoft.XboxSpeechToTextOverlay
-*Zune*
 MicrosoftCorporationII.QuickAssist
 MicrosoftTeams
 MicrosoftWindows.Client.WebExperience
 SAMSUNGELECTRONICSCO*
 Sidia*
-WavesAudio.MaxxAudioProforDell*
