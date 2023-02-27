@@ -3,9 +3,7 @@
 *Facebook*
 AppUp.Intel*
 *Clipchamp*
-DellInc.DellDigitalDelivery
-DellInc.DellSupportAssistforPCs
-HONHAIPRECISIONINDUSTRYCO.DellWatchdogTimer
+*Dell*
 *Bing*
 Microsoft.GamingApp
 Microsoft.Getstarted
