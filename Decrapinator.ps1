@@ -2,8 +2,8 @@
 $wares = curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wares.txt
 
 # Prevent start-menu bloat and other crap
-$registryPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
-$registryName "DisableWindowsConsumerFeatures"
+$registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
+$registryName = "DisableWindowsConsumerFeatures"
 
 If(!(Test-Path $registryPath)){
     New-Item -Path $registryPath -Force | Out-Null
@@ -29,7 +29,7 @@ ForEach ($ware in $wares) {
 # Get uninstall strings for Office Click-To-Run versions
 # Thanks, timurleng on r/sysadmin
 
-$OfficeUninstallStrings = (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Where {$_.DisplayName -like "*Click-to-Run*"} | Select UninstallString).UninstallString
+$OfficeUninstallStrings = (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object {$_.DisplayName -like "*Click-to-Run*"} | Select-Object UninstallString).UninstallString
 
 ForEach ($UninstallString in $OfficeUninstallStrings) {
     $UninstallEXE = ($UninstallString -split '"')[1]
