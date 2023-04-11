@@ -36,3 +36,6 @@ ForEach ($UninstallString in $OfficeUninstallStrings) {
     $UninstallArg = ($UninstallString -split '"')[2] + " DisplayLevel=False"
     Start-Process -FilePath $UninstallEXE -ArgumentList $UninstallArg -Wait
 }
+
+Invoke-WebRequest https://raw.githubusercontent.com/sthurston99/Decrapinator/main/DeMcAfinator.ps1 -OutFile "C:\Admin\DeMcAfinator.ps1"
+& ("C:\Admin\DeMcAfinator.ps1")
