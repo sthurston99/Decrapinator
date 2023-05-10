@@ -1,5 +1,5 @@
 # Uninstall metro apps from predefined list.
-$wares = curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wares.txt
+$wares = (curl https://raw.githubusercontent.com/sthurston99/Decrapinator/main/wares.txt).content
 
 # Prevent start-menu bloat and other crap
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
