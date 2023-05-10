@@ -7,15 +7,15 @@ $mccArgs = "-p StopServices,MFSY,PEF,MXD,CSP,Sustainability,MOCP,MFP,APPSTATS,Au
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = New-Object Security.Principal.WindowsPrincipal $identity
 If(-Not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Host "ERROR: Not running in elevated PowerShell"
-    Write-Host -NoNewLine 'Press any key to exit...';
-    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-    exit
+	Write-Host "ERROR: Not running in elevated PowerShell"
+	Write-Host -NoNewLine 'Press any key to exit...';
+	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+	exit
 }
 
 # Test if Admin Path exists, create if nonexistant
 If(!(Test-Path $AdminPath)) {
-    New-Item $AdminPath -ItemType Directory
+	New-Item $AdminPath -ItemType Directory
 }
 
 # Create temp path inside Admin Path
@@ -30,8 +30,8 @@ Start-Sleep -Seconds 20
 
 # Find extracted files in Temp
 $mcprtmp = Get-ChildItem $Env:LocalAppData\Temp\*.tmp -Recurse -Directory |
-    ForEach-Object {Get-ChildItem $_ -Recurse *mccleanup.exe} |
-        Select-Object -First 1
+	ForEach-Object {Get-ChildItem $_ -Recurse *mccleanup.exe} |
+		Select-Object -First 1
 
 # Copy extracted files to admin path for safety
 Copy-Item -Path $mcprtmp.FullName.Replace("\mccleanup.exe","") -Destination $TempPath -Recurse
