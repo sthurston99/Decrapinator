@@ -1,5 +1,5 @@
 $AdminPath = "C:\Admin\"
-$TempPath = "$AdminPath\temp"
+$TempPath = ($AdminPath + "temp\")
 $MCPR = "https://download.mcafee.com/molbin/iss-loc/SupportTools/MCPR/MCPR.exe"
 $mccArgs = "-p StopServices,MFSY,PEF,MXD,CSP,Sustainability,MOCP,MFP,APPSTATS,Auth,EMproxy,FWdiver,HW,MAS,MAT,MBK,MCPR,McProxy,McSvcHost,VUL,MHN,MNA,MOBK,MPFP,MPFPCU,MPS,SHRED,MPSCU,MQC,MQCCU,MSAD,MSHR,MSK,MSKCU,MWL,NMC,RedirSvc,VS,REMEDIATION,MSC,YAP,TRUEKEY,LAM,PCB,Symlink,SafeConnect,MGS,WMIRemover,RESIDUE -v -s"
 
@@ -40,7 +40,7 @@ Copy-Item -Path $mcprtmp.FullName.Replace("\mccleanup.exe","") -Destination $Tem
 Stop-Process -Name "McClnUi" -Force
 
 # Run mccleanup
-$p = Start-Process "$TempPath\mccleanup.exe" -ArgumentList $mccArgs -PassThru -Wait -NoNewWindow
+$p = Start-Process ($TempPath + "mccleanup.exe") -ArgumentList $mccArgs -PassThru -Wait -NoNewWindow
 
 # Cleanup after running
 Remove-Item -Path $TempPath -Recurse -Force
