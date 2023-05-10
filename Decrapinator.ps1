@@ -32,8 +32,8 @@ ForEach ($ware in $wares) {
 $OfficeUninstallStrings = (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object {$_.DisplayName -like "*Click-to-Run*"} | Select-Object UninstallString).UninstallString
 
 ForEach ($UninstallString in $OfficeUninstallStrings) {
-    $UninstallEXE = ($UninstallString -split '"')[1]
-    $UninstallArg = ($UninstallString -split '"')[2] + " DisplayLevel=False"
+    $UninstallEXE = ($UninstallString -split ' ')[0]
+    $UninstallArg = ($UninstallString -split ' ')[1] + " DisplayLevel=False"
     Start-Process -FilePath $UninstallEXE -ArgumentList $UninstallArg -Wait
 }
 ## Experimental: Remove McAfee Software
