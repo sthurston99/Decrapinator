@@ -11,7 +11,7 @@ If(!(Test-Path $registryPath)){
 New-ItemProperty -Path $registryPath -Name $registryName -PropertyType "DWord" -Value 1 | Out-Null
 
 # Run through uninstall process for Metro Apps
-ForEach ($ware in $wares) {
+ForEach ($ware in $wares.Split([Environment]::NewLine, [StringSplitOptions]::RemoveEmptyEntries)) {
     # Uninstall on Current User
     If(Get-AppxPackage $ware) {
         Get-AppXPackage $ware | Remove-AppxPackage
